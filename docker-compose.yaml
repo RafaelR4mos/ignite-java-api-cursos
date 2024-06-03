@@ -1,0 +1,10 @@
+services:
+  database:
+    container_name: cursos_db_postgres
+    image: "postgres:16.0-alpine3.18"
+    ports:
+      - 5434:5432
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=cursos
