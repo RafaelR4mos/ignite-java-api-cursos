@@ -5,7 +5,6 @@ import com.cursos.modules.Course.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 @Service
 public class CreateCourseService {
@@ -18,6 +17,9 @@ public class CreateCourseService {
                     .ifPresent((user) -> {
                         throw new RuntimeException("curso já registrado");
                     });
+
+            courseEntity.setName(courseEntity.getName().toLowerCase());
+            courseEntity.setCategory(courseEntity.getCategory().toLowerCase());
 
             return this.courseRepository.save(courseEntity);
     }

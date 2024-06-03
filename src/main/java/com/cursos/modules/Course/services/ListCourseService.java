@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ListCourseService {
@@ -18,6 +19,10 @@ public class ListCourseService {
     }
 
     public Optional<List<CourseEntity>> ListByNameOrCategory(String name, String category) {
-        return this.courseRepository.findAllByNameOrCategoryIgnoreCase(name, category);
+        return this.courseRepository.findAllByNameOrCategory(name, category);
+    }
+
+    public CourseEntity findByID(UUID id) {
+        return this.courseRepository.findById(id).orElseThrow();
     }
 }
